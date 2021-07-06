@@ -89,25 +89,49 @@ class MainWindow(QtWidgets.QMainWindow):
             self.ui.direccionCB.addItem("Seleccione Gasolinera")
 
             for station in self.stations:
+                print(station)
                 self.ui.direccionCB\
                     .addItem(str(station['Rótulo']) + " - " + str(station['Dirección']))
 
             self.ui.direccionCB.setEnabled(True)
 
     def station_selected(self):
-        self.ui.sp95LCD.display(0.0)
-        self.ui.sp98LCD.display(0.0)
+        self.ui.sp95E5LCD.display(0.0)
+        self.ui.sp98E5LCD.display(0.0)
+        self.ui.sp95E10LCD.display(0.0)
+        self.ui.sp95E5PremiumLCD.display(0.0)
+        self.ui.sp98E10LCD.display(0.0)
+
         self.ui.gasoleoALCD.display(0.0)
         self.ui.gasoleoBLCD.display(0.0)
         self.ui.gasoleoPremiumLCD.display(0.0)
 
+        self.ui.biodieselLCD.display(0.0)
+        self.ui.bioetanolLCD.display(0.0)
+
+        self.ui.gncLCD.display(0.0)
+        self.ui.gnlLCD.display(0.0)
+        self.ui.glpLCD.display(0.0)
+        self.ui.hidrogenoLCD.display(0.0)
         if self.ui.direccionCB.currentIndex() != -1 and self.ui.direccionCB.currentIndex() != 0:
             station = self.stations[self.ui.direccionCB.currentIndex() - 1]
             if station['Precio Gasolina 95 E5'] != '':
-                self.ui.sp95LCD.display(float(station['Precio Gasolina 95 E5'].replace(',', '.')))
+                self.ui.sp95E5LCD.display(float(station['Precio Gasolina 95 E5'].replace(',', '.')))
 
             if station['Precio Gasolina 98 E5'] != '':
-                self.ui.sp98LCD.display(float(station['Precio Gasolina 98 E5'].replace(',', '.')))
+                self.ui.sp98E5LCD.display(float(station['Precio Gasolina 98 E5'].replace(',', '.')))
+
+            if station['Precio Gasolina 95 E5 Premium'] != '':
+                self.ui.sp95E5PremiumLCD.display(
+                    float(station['Precio Gasolina 95 E5 Premium'].replace(',', '.')))
+
+            if station['Precio Gasolina 95 E10'] != '':
+                self.ui.sp95E10LCD.display(
+                    float(station['Precio Gasolina 95 E10'].replace(',', '.')))
+
+            if station['Precio Gasolina 98 E10'] != '':
+                self.ui.sp98E10LCD.display(
+                    float(station['Precio Gasolina 98 E10'].replace(',', '.')))
 
             if station['Precio Gasoleo A'] != '':
                 self.ui.gasoleoALCD.display(float(station['Precio Gasoleo A'].replace(',', '.')))
@@ -116,11 +140,29 @@ class MainWindow(QtWidgets.QMainWindow):
                 self.ui.gasoleoBLCD.display(float(station['Precio Gasoleo B'].replace(',', '.')))
 
             if station['Precio Gasoleo Premium'] != '':
-                self.ui.gasoleoPremiumLCD\
-                    .display(float(station['Precio Gasoleo Premium'].replace(',', '.')))
+                self.ui.gasoleoPremiumLCD.display(
+                    float(station['Precio Gasoleo Premium'].replace(',', '.')))
 
-    def close_all(self):
-        self.close()
+            if station['Precio Biodiesel'] != '':
+                self.ui.biodieselLCD.display(float(station['Precio Biodiesel'].replace(',', '.')))
+
+            if station['Precio Bioetanol'] != '':
+                self.ui.bioetanolLCD.display(float(station['Precio Bioetanol'].replace(',', '.')))
+
+            if station['Precio Gas Natural Comprimido'] != '':
+                self.ui.gncLCD.display(
+                    float(station['Precio Gas Natural Comprimido'].replace(',', '.')))
+
+            if station['Precio Gas Natural Licuado'] != '':
+                self.ui.gnlLCD.display(
+                    float(station['Precio Gas Natural Licuado'].replace(',', '.')))
+
+            if station['Precio Gases licuados del petróleo'] != '':
+                self.ui.glpLCD.display(
+                    float(station['Precio Gases licuados del petróleo'].replace(',', '.')))
+
+            if station['Precio Hidrogeno'] != '':
+                self.ui.hidrogenoLCD.display(float(station['Precio Hidrogeno'].replace(',', '.')))
 
 
 app = QtWidgets.QApplication([])
