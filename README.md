@@ -1,5 +1,5 @@
 # GasolinerasAPP
-
+[![Pylint](https://github.com/igorrecioh/gasolineras-app/actions/workflows/pylint.yml/badge.svg?branch=main)](https://github.com/igorrecioh/gasolineras-app/actions/workflows/pylint.yml)
 ## Requisitos
 - Python3
 - Pip3 actualizado
