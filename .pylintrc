@@ -1,4 +1,4 @@
 [pylint]
 
 ignore=gas_main_window.py
-disable=missing-function-docstring,missing-module-docstring,missing-class-docstring,c-extension-no-member,invalid-name,too-many-branches
+disable=missing-function-docstring,missing-module-docstring,missing-class-docstring,c-extension-no-member,too-many-branches,line-too-long
