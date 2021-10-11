@@ -1,5 +1,6 @@
 import sys
 from PyQt5 import QtWidgets
+from PyQt5.QtWidgets import QMessageBox
 
 from gas_main_window import Ui_MainWindow
 
@@ -12,13 +13,14 @@ class MainWindow(QtWidgets.QMainWindow):
         self.ui_window = Ui_MainWindow()
         self.ui_window.setupUi(self)
 
+        # Menu
+        self.ui_window.actionVersion.triggered.connect(self.about)
+        self.ui_window.actionSalir.triggered.connect(self.close)
+
         # Variables
         self.provinces = {}
         self.cities = {}
         self.stations = []
-
-        # Buttons
-        self.ui_window.salirBtn.clicked.connect(self.close)
 
         # Comboboxes
         self.ui_window.comunidadCB.addItem("Seleccione CCAA")
@@ -166,6 +168,13 @@ class MainWindow(QtWidgets.QMainWindow):
         self.ui_window.gnlLCD.display(0.0)
         self.ui_window.glpLCD.display(0.0)
         self.ui_window.hidrogenoLCD.display(0.0)
+
+    @staticmethod
+    def about():
+        msg = QMessageBox()
+        msg.setWindowTitle("Sobre esta aplicación")
+        msg.setText("GasolinerasApp alpha")
+        msg.exec_()
 
 app = QtWidgets.QApplication([])
 application = MainWindow()
