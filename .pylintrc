@@ -2,3 +2,4 @@
 
 ignore=gas_main_window.py
 disable=missing-function-docstring,missing-module-docstring,missing-class-docstring,c-extension-no-member,too-many-branches,line-too-long
+extension-pkg-whitelist=PyQt5
